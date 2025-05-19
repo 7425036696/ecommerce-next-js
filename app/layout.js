@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+import { Toaster } from "react-hot-toast";
+import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata = {
   title: "Ecommerce App",
@@ -11,7 +12,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <ClerkProvider>
+        <Toaster/>
         {children}
+        </ClerkProvider>
         </body>
     </html>
   );
