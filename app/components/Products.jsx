@@ -98,7 +98,7 @@ export function ProductCard({ product }) {
     <div className="flex flex-col gap-3 border p-4 rounded-xl shadow-sm hover:shadow-md transition">
       <div className="relative w-full">
         <img
-          src={product?.featureImage}
+          src={product?.featureImage || 'any.png'}
           className="rounded-xl h-48 w-full object-cover"
           alt={product?.title}
         />
