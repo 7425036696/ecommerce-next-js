@@ -174,4 +174,3 @@ export function ProductCard({ product }) {
   )
 }
 
-export {ProductCard}

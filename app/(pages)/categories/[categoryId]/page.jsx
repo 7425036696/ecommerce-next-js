@@ -1,5 +1,5 @@
 import {  getCategoryById, getProductsByCategory } from "@/lib/server";
-import {ProductCard} from '@/app/components/Products'
+import { ProductCard } from '@/app/components/Products'
 
 
 export async function generateMetadata({ params }) {
