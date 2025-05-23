@@ -15,8 +15,8 @@ export default function AddToCartButton({ product }) {
       const { data, error } = await supabase
         .from("cart")
         .select("id")
-        .eq("user_id", user.id)
-        .eq("product_id", product.id)
+        .eq("user_id", user?.id)
+        .eq("product_id", product?.id)
         .maybeSingle();
 
       if (error) {
@@ -28,7 +28,7 @@ export default function AddToCartButton({ product }) {
     };
 
     checkCart();
-  }, [product.id, user]);
+  }, [product?.id, user]);
 
   const handleAddToCart = async () => {
     if (!user) return alert("Please login to add to cart");
@@ -36,22 +36,22 @@ export default function AddToCartButton({ product }) {
     const { data: existingItem } = await supabase
       .from("cart")
       .select("*")
-      .eq("user_id", user.id)
-      .eq("product_id", product.id)
+      .eq("user_id", user?.id)
+      .eq("product_id", product?.id)
       .maybeSingle();
 
     if (existingItem) {
       const { error: updateError } = await supabase
         .from("cart")
         .update({ quantity: existingItem.quantity + 1 })
-        .eq("id", existingItem.id);
+        .eq("id", existingItem?.id);
 
       if (updateError) return console.error(updateError);
     } else {
       const { error: insertError } = await supabase.from("cart").insert([
         {
-          user_id: user.id,
-          product_id: product.id,
+          user_id: user?.id,
+          product_id: product?.id,
           quantity: 1,
         },
       ]);
